@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서 객체 선택</title>
+    <script>
+        window.onload = function() { /* 이벤트가 발생할 때, 3초후 바뀐다. */ 
+            setTimeout(function () {
+                let headers = document.querySelectorAll('h1');
+
+                for (let header of headers) {
+                    header.style.color = 'red';
+                    header.style.backgroundColor = 'aliceblue';
+                    header.innerHTML = 'Form JavaScript'; /* innerHTML 19p */
+                }
+            }, 3000);
+        }
+    </script>
+</head>
+<body>
+    <h1>Title</h1>
+    <h1>Title</h1>
+    <h1>Title</h1>
+</body>
+</html>
+<!-- 
+😍타이틀에서 3초후에 폼자바스크립트로 바뀝니다.setTimeout 사용, innerHTML사용
+-->
