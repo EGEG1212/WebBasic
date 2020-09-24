@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 제거</title>
+    <script>
+        window.onload = function () {
+            let button = document.getElementById('button');
+            button.onclick = function () {
+                return false;                       //이걸 입력하니까 눌러도 안이동🙌
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="button" onclick="location.href='http://hanbit.co.kr'">한빛</button>
+
+</body>
+</html>

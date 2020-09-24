@@ -1,0 +1,88 @@
+<!-- 1.🤷‍♂️갬블링 게임🤷‍♀️
+10,000원 0회 부터 시작
+0.1.2 랜덤 Math.floor(Math.random()*3) 0.1.2값이 나옴
+0 0 1 하나라도 다르면 -1000 
+0 0 0 세 번호가 같으면 +8000 잭팟!!!
+    <button>버튼이던 div박스던 만들어서 
+    누르면onclik  > 랜덤숫자로 바뀌게 innerHTML
+        if 세 번호가 같으면 true (게임머니 증가, 횟수증가)
+        else 세 번호가 다르면 false (게임머니 감소, 횟수증가)
+    게임머니(트루;증가, 폴스;감소)와 
+    횟수(무조건 증가)가 변동되게 하려면 조건문
+    게임머니가 0원이면 더 이상 클릭안되게 return false;  
+>>2.부스트랩 핸드폰화면에 넣어보자. 🤔 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <title>Document</title>
+    <script>
+        let clickCount = 0;
+        let numbers = [];
+        let gameMoney = 10000;
+        let gameCount = 0;
+        function change(id) {
+            let button = document.getElementById(id);
+            let random = Math.floor(Math.random() * 3);
+            button.innerHTML = random;
+            clickCount++;
+            numbers.push(random);
+            if (clickCount === 3)
+            setTimeout(function() {
+                playGame();
+            }, 2000);
+        }
+
+        function playGame() {
+            if (numbers[0] === numbers[1] && numbers[0] ===numbers[2]) {
+                gameMoney += 8000; 
+            } else {
+                gameMoney -= 1000;
+            }
+            if (gameMoney === 0) {
+                alert('You lose!!! Game Reset');
+                gameMoney = 10000;
+                gameCount = 0;
+            } else {
+                gameCount++;
+            }
+
+            gameCount ++
+            clickCount = 0;
+            numbers = [];
+
+
+            let moneyDOM = document.getElementById('money');
+            let countDOM = document.getElementById('count');
+            let oneDOM = document.getElementById('one');
+            let twoDOM = document.getElementById('two');
+            let threeDOM = document.getElementById('three');
+            moneyDOM.innerHTML = gameMoney;
+            countDOM.innerHTML = gameCount;
+            oneDOM.innerHTML = '?'
+            twoDOM.innerHTML = '?'
+            threeDOM.innerHTML = '?'
+        }
+    </script>
+</head>
+<body>
+    <h3>갬블링 게임</h3>
+    <hr>
+    <p>게임 머니 : <span id="money"> 10000</span>원
+    횟수 : <span id="count"> 0 </span> 회 </p>
+    <button id='one' onclick="change('one')" class="btn btn-primary">
+        <span class="spinner-border spinner-border-sm"></span> <h1 class="display-4">? </h1> </button>
+    <button id='two' onclick="change('two')" class="btn btn-primary">
+        <span class="spinner-border spinner-border-sm"></span> <h1 class="display-4">?</h1> </button>
+    <button id='three' onclick="change('three')" class="btn btn-primary">
+        <span class="spinner-border spinner-border-sm"></span> <h1 class="display-4">?</h1></button>
+    
+</body>
+</html>
